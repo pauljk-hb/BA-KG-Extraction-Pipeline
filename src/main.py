@@ -41,7 +41,7 @@ system_prompt = (
         "}"
 )
 
-model_name = "llama-3.3-70b-versatile"
+model_name = "llama-3.1-8b-instant"
 temperature = 0.1
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))

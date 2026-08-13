@@ -1,0 +1,56 @@
+{
+  "experiment_id": "exp_20260813_185251_134",
+  "timestamp": "2026-08-13T18:52:51.134766",
+  "timestamp_human": "13.08.2026 - 18:52",
+  "metadata": {
+    "model_name": "llama-3.1-8b-instant",
+    "temperature": 0.1,
+    "execution_time_sec": null,
+    "tags": [
+      "test_run",
+      "wagenfeld_sample"
+    ]
+  },
+  "prompts": {
+    "system_prompt": "You are a top-tier algorithm designed to extract information in structured formats for building knowledge graphs.Your task is to identify the requested entities and relations with the user prompt from a given text.Generate the output in JSON format, containing a list of JSON objects. Each object should contain the following keys: 'head', 'head_type', 'relation', 'tail' and 'tail_type'. Here is one example: Consider the following text: 'Adam has been a software engineer at Microsoft since 2009'. Example output structure:\n{\n  \"relationships\": [\n    {\"head\": \"Adam\", \"head_type\": \"Person\", \"relation\": \"WORKS_FOR\", \"tail\": \"Microsoft\", \"tail_type\": \"Company\"}\n  ]\n}",
+    "user_input": "Im Jahr 1924 entwarf Wilhelm Wagenfeld die berühmte Bauhaus-Leuchte in Weimar. Später zog der Designer nach Bremen, wo er über viele Jahre hinweg mit der AGIFA zusammenarbeitete und für diese neuartige Glaskollektionen gestaltete."
+  },
+  "output": {
+    "raw_response": "{\n  \"relationships\": [\n      {\n         \"head\": \"Wilhelm Wagenfeld\",\n         \"head_type\": \"Person\",\n         \"relation\": \"CREATED\",\n         \"tail\": \"Bauhaus-Leuchte\",\n         \"tail_type\": \"Product\"\n      },\n      {\n         \"head\": \"Wilhelm Wagenfeld\",\n         \"head_type\": \"Person\",\n         \"relation\": \"DESIGNED_FOR\",\n         \"tail\": \"AGIFA\",\n         \"tail_type\": \"Company\"\n      },\n      {\n         \"head\": \"Wilhelm Wagenfeld\",\n         \"head_type\": \"Person\",\n         \"relation\": \"LIVED_IN\",\n         \"tail\": \"Bremen\",\n         \"tail_type\": \"City\"\n      },\n      {\n         \"head\": \"Wilhelm Wagenfeld\",\n         \"head_type\": \"Person\",\n         \"relation\": \"WORKED_WITH\",\n         \"tail\": \"AGIFA\",\n         \"tail_type\": \"Company\"\n      }\n   ]\n}",
+    "parsed_result": {
+      "relationships": [
+        {
+          "head": "Wilhelm Wagenfeld",
+          "head_type": "Person",
+          "relation": "CREATED",
+          "tail": "Bauhaus-Leuchte",
+          "tail_type": "Product"
+        },
+        {
+          "head": "Wilhelm Wagenfeld",
+          "head_type": "Person",
+          "relation": "DESIGNED_FOR",
+          "tail": "AGIFA",
+          "tail_type": "Company"
+        },
+        {
+          "head": "Wilhelm Wagenfeld",
+          "head_type": "Person",
+          "relation": "LIVED_IN",
+          "tail": "Bremen",
+          "tail_type": "City"
+        },
+        {
+          "head": "Wilhelm Wagenfeld",
+          "head_type": "Person",
+          "relation": "WORKED_WITH",
+          "tail": "AGIFA",
+          "tail_type": "Company"
+        }
+      ]
+    },
+    "metrics": {
+      "extracted_edges_count": 4
+    }
+  }
+}
