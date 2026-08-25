@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 
 # 1. JSONL-Datei laden
-log_file = Path("data/logs/all_experiments.jsonl")
+log_file = Path("../../data/logs/all_experiments.jsonl")
 
 if not log_file.exists():
     print("Keine Log-Datei gefunden!")
