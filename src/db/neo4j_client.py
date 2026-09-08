@@ -1,6 +1,6 @@
 from neo4j import GraphDatabase
 from src.config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
-from src.models.schemas import Exponat, LLMGraphExtraction
+from src.models.schemas import CSVExponat, LLMGraphExtraction
 
 class Neo4jClient:
     def __init__(self):
@@ -17,7 +17,7 @@ class Neo4jClient:
                 session.run(f"CREATE CONSTRAINT IF NOT EXISTS FOR (n:{label}) REQUIRE n.name IS UNIQUE;")
         print("✅ Constraints initialisiert.")
 
-    def merge_exponate(self, exponate: list[Exponat]):
+    def merge_exponate(self, exponate: list[CSVExponat]):
         query = """
         UNWIND $batch AS row
         // GEÄNDERT: Matching über werks_nr

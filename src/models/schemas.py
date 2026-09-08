@@ -3,12 +3,12 @@ from pydantic import BaseModel, Field
 
 # --- RAM-Modelle für Raw-Daten ---
 
-class Exponat(BaseModel):
+class CSVExponat(BaseModel):
     werks_nr: str
     titel: str
     roher_text: str = Field(default="", description="Rohtext. Geht NICHT in die DB.")
 
-class Dokument(BaseModel):
+class CSVDokument(BaseModel):
     signatur: str
     dateipfad: str
     volltext: str = Field(default="", description="Rohtext. Geht NICHT in die DB.")
