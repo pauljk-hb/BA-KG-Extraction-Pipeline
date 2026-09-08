@@ -3,19 +3,17 @@ from src.models.schemas import Exponat
 
 
 def parse_csv(filepath: str) -> list[Exponat]:
-    # Passt sich an Semikolon-getrennte Exporte an
-    df = pd.read_csv(filepath, sep=",", dtype=str).fillna("")
-
+    df = pd.read_csv(filepath, sep=",", dtype=str, encoding="utf-8").fillna("")
     exponate = []
+
     for _, row in df.iterrows():
-        inv_nr = row.get("Objekt.Inventarnummer") or row.get("Andere_Nummer")
-        if not inv_nr:
-            continue
+        werks_nr = row.get("Werkverzeichnisnummer", "").strip()
+        if not werks_nr:
+            continue  # Ohne Werksnummer kein Eintrag im Graph
 
         exponate.append(Exponat(
-            inventarnummer=inv_nr.strip(),
+            werks_nr=werks_nr,
             titel=(row.get("Titel") or row.get("Objekt.Titel") or "").strip(),
-            bezeichnung=(row.get("Objektbezeichnung") or "").strip(),
             roher_text=row.get("Bemerkungen", "").strip()
         ))
     return exponate
